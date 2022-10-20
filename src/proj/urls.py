@@ -15,9 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from hello_world.views import hello_world
+from reflib import views as au_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello_world/', hello_world)
+    path('add_author/', au_views.AddAuthor.as_view()),
+    path('upd_author/<int:pk>/', au_views.UpdAuthor.as_view()),
+    path('del_author/<int:pk>/', au_views.DelAuthor.as_view()),
+    path('details_author/<int:pk>/', au_views.DetailAuthor.as_view()),
+    path('list_author/', au_views.ListAuthor.as_view()),
+    
+    path('add_publisher/', au_views.AddPublisher.as_view()),
+    path('upd_publisher/<int:pk>/', au_views.UpdPublisher.as_view()),
+    path('del_publisher/<int:pk>/', au_views.DelPublisher.as_view()),
+    path('details_publisher/<int:pk>/', au_views.DetailPublisher.as_view()),
+    path('list_publisher/', au_views.ListPublisher.as_view()),
 ]

@@ -15,8 +15,8 @@ class Publisher(models.Model):
         blank=True,
         null=True,
         verbose_name='Note')
-
-
+    def get_absolute_url(self):
+        return f'/details_publisher/{self.pk}'
 
 class Author(models.Model):
     auth_name = models.CharField(
@@ -30,8 +30,8 @@ class Author(models.Model):
         blank=True,
         null=True,
         verbose_name='Note')
-
-from django.db import models
+    def get_absolute_url(self):
+        return f'/details_author/{self.pk}'
 
 class Cover(models.Model):
     HADRCOVER = 'HC'
@@ -39,7 +39,7 @@ class Cover(models.Model):
     DUSTJACKET = 'DJ'
     TYPES_OF_COVER_CHOICES = [
         (HADRCOVER, 'Hard Cover'),
-        (SOFTCOVER, 'Sophomore'),
+        (SOFTCOVER, 'Softcover'),
         (DUSTJACKET, 'Dust Jacket'),
     ]
     types_of_cover = models.CharField(
@@ -47,6 +47,12 @@ class Cover(models.Model):
         choices=TYPES_OF_COVER_CHOICES,
         default=HADRCOVER,
     )
-
-def is_upperclass(self):
+    def is_upperclass(self):
         return self.types_of_cover in {self.HARDCOVER, self.DUSTCOVER}
+
+
+def __str__(self):
+    return self.name
+
+def __repr__(self):
+    return self.name
