@@ -22,11 +22,11 @@
     {% for obj in object_list %}
 
     <tr>
-        <td><a href="/upd_publisher/{{ obj.pk }}/">{{ obj.pk }}</a></td>
+        <td><a href="{% url 'reflib:upd_publisher' pk=obj.pk %}">{{ obj.pk }}</a></td>
         <td>{{ obj.pub_name }}</td>
         <td>{{ obj.pub_country }}</td>
         <td>{{ obj.pub_note }}</td>
-        <td><a href="/del_publisher/{{ obj.pk }}/">DELETE</a></td>
+        <td><a href="{% url 'reflib:del_publisher' pk=obj.pk %}">DELETE</a></td>
     </tr>
     
     {% endfor %}

@@ -14,20 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from reflib import views as au_views
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('add_author/', au_views.AddAuthor.as_view()),
-    path('upd_author/<int:pk>/', au_views.UpdAuthor.as_view()),
-    path('del_author/<int:pk>/', au_views.DelAuthor.as_view()),
-    path('details_author/<int:pk>/', au_views.DetailAuthor.as_view()),
-    path('list_author/', au_views.ListAuthor.as_view()),
-    
-    path('add_publisher/', au_views.AddPublisher.as_view()),
-    path('upd_publisher/<int:pk>/', au_views.UpdPublisher.as_view()),
-    path('del_publisher/<int:pk>/', au_views.DelPublisher.as_view()),
-    path('details_publisher/<int:pk>/', au_views.DetailPublisher.as_view()),
-    path('list_publisher/', au_views.ListPublisher.as_view()),
-]
+    path('reflib/', include('reflib.urls', namespace='reflib')),
+    ]

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse_lazy
 
 # Create your models here.
 class Publisher(models.Model):
@@ -16,7 +17,8 @@ class Publisher(models.Model):
         null=True,
         verbose_name='Note')
     def get_absolute_url(self):
-        return f'/details_publisher/{self.pk}'
+        #return f'/details_publisher/{self.pk}'
+        return reverse_lazy('details_publisher', kwargs={'pk': self.pk})
 
 class Author(models.Model):
     auth_name = models.CharField(
@@ -31,7 +33,8 @@ class Author(models.Model):
         null=True,
         verbose_name='Note')
     def get_absolute_url(self):
-        return f'/details_author/{self.pk}'
+        #return f'/details_author/{self.pk}'
+        return reverse_lazy('details_author', kwargs={'pk': self.pk})
 
 class Cover(models.Model):
     HADRCOVER = 'HC'
