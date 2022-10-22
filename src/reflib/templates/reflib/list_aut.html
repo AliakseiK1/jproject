@@ -22,11 +22,11 @@
     {% for obj in object_list %}
 
     <tr>
-        <td><a href="/upd_author/{{ obj.pk }}/">{{ obj.pk }}</a></td>
+        <td><a href="{% url 'upd_author' pk=obj.pk %}">{{ obj.pk }}</a></td>
         <td>{{ obj.auth_name }}</td>
         <td>{{ obj.auth_country }}</td>
         <td>{{ obj.auth_note }}</td>
-        <td><a href="/del_author/{{ obj.pk }}/">DELETE</a></td>
+        <td><a href="{% url 'del_author' pk=obj.pk %}">DELETE</a></td>
     </tr>
     
     {% endfor %}
