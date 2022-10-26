@@ -15,8 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from reflib import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('reflib/', include('reflib.urls', namespace='reflib')),
+    path('mainpage/', views.main_page, name = 'main_page'),
     ]
+
+"""
+    path('mainpage/', include('mainpage.urls', namespace='mainpage')),
+    ]
+    """

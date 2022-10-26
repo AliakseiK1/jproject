@@ -5,6 +5,7 @@ from django.views import generic
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from . import models, forms
+from django.urls import reverse_lazy
 
 # Create your views here.
 #View list of Authors
@@ -46,26 +47,10 @@ class UpdAuthor(generic.UpdateView):
 
 class DelAuthor(generic.DeleteView):
     model = models.Author
-    form_class = forms.Author
     template_name = 'reflib/del_aut.html'
+    success_url = reverse_lazy("reflib:list_author")
 
-"""
-def add_author(request):
-    if request.method == "GET":
-        form = forms.Author()
-        context = {'form': form}
-        return render(request, template_name='reflib/create.html', context=context)
-    elif request.method == "POST":
-        form = forms.Author(request.POST)
-        if form.is_valid():
-            obj = form.save()
-            return HttpResponseRedirect(f'/authors_list/{obj.pk}/')
-        else:
-            context = {'form': form}
-            return render(request, template_name='reflib/create.html', context=context)
-    return HttpResponse("What is this????")
 
-"""
 
 ###################################################################
 #View list of Publishers
@@ -98,5 +83,22 @@ class UpdPublisher(generic.UpdateView):
 
 class DelPublisher(generic.DeleteView):
     model = models.Publisher
-    form_class = forms.Publisher
     template_name = 'reflib/pub_del.html'
+    success_url = reverse_lazy("reflib:list_publisher")
+
+
+#############################################
+#View for Mainpage
+
+
+"""
+class MainPage(generic.DetailView):
+    template_name = 'mainpage/mainpage.html'
+
+def main_page (request):
+    mainpage = 'mainpage.html'
+    responce = mainpage
+    return HttpResponse(responce)
+"""
+def main_page(request):
+    return render(request, 'mainpage:mainpage.html')
