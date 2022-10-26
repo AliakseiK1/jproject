@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'reflib'
+    'reflib',
+    'mainpage'
 ]
 
 MIDDLEWARE = [
@@ -127,7 +128,9 @@ STATICFILES_DIRS = [
 
 
 STATIC_URL = 'static/'
-#STATIC_ROOT = ''
+STATIC_ROOT = '/home/AlexeyKrasnogir/static'
+MEDIA_URL = 'media/'
+MEDIA_ROOT = '/home/AlexeyKrasnogir/media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
