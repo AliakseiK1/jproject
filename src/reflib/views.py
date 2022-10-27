@@ -1,3 +1,4 @@
+from multiprocessing import context
 from tkinter import Tk
 import _tkinter
 from turtle import update
@@ -91,14 +92,18 @@ class DelPublisher(generic.DeleteView):
 #View for Mainpage
 
 
-"""
-class MainPage(generic.DetailView):
+
+class MainPage(generic.TemplateView):
+    model = models.MainPage
     template_name = 'mainpage/mainpage.html'
 
+"""
 def main_page (request):
     mainpage = 'mainpage.html'
     responce = mainpage
     return HttpResponse(responce)
-"""
+
 def main_page(request):
-    return render(request, 'mainpage:mainpage.html')
+    if request.method == 'GET':
+        return render(request, 'mainpage/mainpage.html', context)
+"""
