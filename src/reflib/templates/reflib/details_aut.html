@@ -1,17 +1,13 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'ref/bs/css/bootstrap.min.css' %}" rel="stylesheet">
-    <script src="{% static 'ref/bs/js/bootstrap.min.js' %}"></script>
-    <title>Author Details</title>
-</head>
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Author Details
+{% endblock title %}
+
+{% block body %}
 <body>
     <h1>Details Of Authors</h1>
     <b>PK{{ object.pk }}</b> and Name of the Author is <b>{{ object.auth_name }}</b><br>
     <b>NOTE:</b> {{ object.auth_note }}
 </body>
-</html>
+{% endblock body %}

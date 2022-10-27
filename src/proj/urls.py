@@ -21,7 +21,7 @@ from reflib import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('reflib/', include('reflib.urls', namespace='reflib')),
-    path('mainpage/', views.main_page, name = 'main_page'),
+    path('mainpage/', views.main_page, name = 'main'),
     ]
 
 """
