@@ -20,11 +20,11 @@ from reflib import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('mainpage/', views.MainPage.as_view(), name = 'main'),
     path('reflib/', include('reflib.urls', namespace='reflib')),
-    path('mainpage/', views.main_page, name = 'main'),
     ]
 
 """
     path('mainpage/', include('mainpage.urls', namespace='mainpage')),
     ]
-    """
+"""

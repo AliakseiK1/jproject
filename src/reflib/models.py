@@ -1,5 +1,10 @@
+from re import template
+from typing import Generic
 from django.db import models
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, path
+from django.views.generic import TemplateView
+from django.views import generic
+
 
 # Create your models here.
 class Publisher(models.Model):
@@ -52,6 +57,9 @@ class Cover(models.Model):
     )
     def is_upperclass(self):
         return self.types_of_cover in {self.HARDCOVER, self.DUSTCOVER}
+
+class MainPage(generic.TemplateView):
+    template_name = 'mainpage/mainpage.html'
 
 
 def __str__(self):
