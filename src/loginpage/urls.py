@@ -1,4 +1,4 @@
-"""proj URL Configuration
+"""loginpage URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -13,20 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include
 from reflib import views
-from django.conf import settings
-from django.conf.urls.static import static
+from django.urls import path
+from django.contrib.auth import views as auth_views
 
-
+app_name = "loginpage"
+"""
+urlpatterns = [
+    path('', views.user_login, name = 'loginpage'),
+]
+"""
 
 urlpatterns = [
-    path('', views.MainPage.as_view(), name = 'main'),
-    path('admin/', admin.site.urls),
-    path('reflib/', include('reflib.urls')),
-    path('bookview/', include('bookview.urls')),
-    path('login/', include('loginpage.urls'))
-    ]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('', auth_views.LoginView.as_view(template_name='loginpage/loginpage.html'), name = 'login'),   
+]
