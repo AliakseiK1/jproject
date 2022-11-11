@@ -31,11 +31,31 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="/bookview/list_book/">All Products</a></li>
                                     <li><hr class="dropdown-divider" /></li>
-                                    <li><a class="dropdown-item" href="#!">Popular Items</a></li>
                                     <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                                    <li><a class="dropdown-item" href="#!">Sale</a></li>
                                 </ul>
-                            <li class="nav-item"><a class="nav-link" href="#!">User: <b>{{ user }}</b></a></li>
                             </li>
+                            {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" >Welcome, <i>{{ user.username }}</i></a></li>
+                            {% else %}
+                            <li class="nav-item"><a class="nav-link active" aria-current="page">Welcome, <i>New user!</i></a></li><li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'loginpage:login' %}"> Please <b>log in.</b></a></li>
+                            {% endif %}
+                            {% if perms.contenttypes.change_contenttype %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Site administration</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/admin">Django Admin</a></li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <li><a class="dropdown-item" href="/bookview/list_book/">Book List Management</a></li>
+                                    <li><a class="dropdown-item" href="/bookview/add_book/">Add New Book</a></li>
+                                    <li><a class="dropdown-item" href="/reflib/list_aut/">Authors List Management</a></li>
+                                    <li><a class="dropdown-item" href="/reflib/add_aut/">Add New Author</a></li>
+                                    <li><a class="dropdown-item" href="/reflib/list_pub/">Publishers Management</a></li>
+                                    <li><a class="dropdown-item" href="/reflib/add_pub/">Add New Publisher</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                            
                         </ul>
                         <form class="d-flex">
                             <button class="btn btn-outline-dark" type="submit">

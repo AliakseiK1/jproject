@@ -26,7 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('reflib/', include('reflib.urls')),
     path('bookview/', include('bookview.urls')),
-    path('login/', include('loginpage.urls'))
+    path('login/', include('loginpage.urls'),name = 'login')
     ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
