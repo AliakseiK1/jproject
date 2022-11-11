@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Login
+{% endblock title %}
+{% block body %}
+        </head>
+            <body>
+                <h1>Please, provide your credentials</h1>
+                <form method="post" action="{% url 'loginpage:login' %}">
+                    {% csrf_token %}
+                    <br>
+                    <table>
+                    <tr>
+                        <td>{{ form.username.label_tag }}</td>
+                        <td>{{ form.username }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.password.label_tag }}</td>
+                        <td>{{ form.password }}</td>
+                    </tr>
+                    </table><br>
+            
+                 <input type="submit" value="login">
+                 <input type="hidden" name="next" value="{% url 'main' %}">
+                </form>
+            </body>
+{% endblock body %}

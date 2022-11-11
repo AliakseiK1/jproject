@@ -2,11 +2,14 @@ from multiprocessing import context
 from tkinter import Tk
 import _tkinter
 from turtle import update
+from urllib import response
 from django.views import generic
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
 from . import models, forms
 from django.urls import reverse_lazy
+from django.shortcuts import render
+from django.contrib.auth import authenticate, login
+from django.template import RequestContext
 
 # Create your views here.
 #View list of Authors
@@ -90,9 +93,6 @@ class DelPublisher(generic.DeleteView):
 
 #############################################
 #View for Mainpage
-
-
-
 class MainPage(generic.TemplateView):
     model = models.MainPage
     template_name = 'mainpage/mainpage.html'
@@ -106,4 +106,24 @@ def main_page (request):
 def main_page(request):
     if request.method == 'GET':
         return render(request, 'mainpage/mainpage.html', context)
+"""
+
+
+#########################################
+#users
+"""
+def user_login(request):
+    if request.method == 'GET':
+        return render(request,'loginpage/loginpage.html', context={})
+    if request.method == 'POST':
+        user = authenticate(
+            request=request,
+            username=request.POST.get('login'),
+            password=request.POST.get('password'),
+        )
+        if user is not None:
+            print(user)
+            login(request, user)
+            return render (request, 'mainpage/mainpage.html', context_instance=RequestContext(request))
+
 """

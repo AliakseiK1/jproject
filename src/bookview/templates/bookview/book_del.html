@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Delete Book
+{% endblock title %}
+</head>
+{% block body %}
+<body>
+    <h1>Delete Book</h1>
+    Are you really want to delete the Book with <b>PK{{ object.pk }}</b> and Name <b>{{ object.pub_name }}</b>?
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" class="btn btn-success" value="Press the button to Confirm">
+    </form>
+</body>
+{% endblock body %}

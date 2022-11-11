@@ -1,4 +1,4 @@
-"""mainpage URL Configuration
+"""cartview URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -13,14 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
-"""
+from django.contrib import admin
 from django.urls import path
-from reflib import views
-
-app_name = "mainpage"
 
 urlpatterns = [
-    path('mainpage/', views.main_page, name = 'main_page'),
+    path('admin/', admin.site.urls),
 ]
-""" 
