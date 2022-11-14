@@ -16,7 +16,6 @@ class ListBook(generic.ListView):
     template_name = 'bookview/booklist.html'
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['a_book'] = models.Book.objects.get(pk=2)
         return context
 
 class BookView(generic.DetailView):
@@ -24,7 +23,7 @@ class BookView(generic.DetailView):
     template_name = 'bookview/bookview.html'
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['a_book'] = models.Book.objects.get(pk=2)
+        context['a_book'] = models.Book.objects.get(pk=9)
         return context
 
 class AddBook(generic.CreateView):

@@ -49,8 +49,8 @@ INSTALLED_APPS = [
     'reflib',
     'mainpage',
     'bookview',
-    'cartview',
     'loginpage',
+    'cartview',
 ]
 
 MIDDLEWARE = [
