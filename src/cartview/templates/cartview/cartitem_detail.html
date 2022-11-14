@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Cart
+{% endblock title %}
+
+{% block body %}
+<body>
+    <h1>Cart</h1>
+    <b>PK{{ object.pk }}</b><br>
+    <b>{{ object.book_image }}</b><br>
+    <b>Name of the Book{{ object.book_name }}</b><br>
+    <b>Author{{ object.book_name }}</b><br>
+    <b>Type of the book cover{{ object.book_cover }}</b><br>
+
+</body>
+{% endblock body %}

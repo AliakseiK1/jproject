@@ -1,21 +1,22 @@
-"""cartview URL Configuration
+from django.urls import path, include
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
-from django.urls import path
+from . import views
+app_name = "cartview"
 
+# Cart Urls
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('cart/', views.ListCart.as_view(), name='carts-list'),
+    path('cart/<int:pk>/', views.DetailCart.as_view(), name='cart-detail'),
+    path('cart/create/', views.CreateCart.as_view(), name='cart-create'),
+    path('cart/<int:pk>/update/', views.UpdateCart.as_view(), name='cart-update'),
+    path('cart/<int:pk>/delete/', views.DeleteCart.as_view(), name='cart-delete'),
+]
+
+# CartItem Urls
+urlpatterns += [
+    path('cartitem/', views.ListCartItem.as_view(), name='cartitem-list'),
+    path('cartitem/<int:pk>/', views.DetailCartItem.as_view(), name='cartitem-detail'),
+    path('cartitem/create/', views.CreateCartItem.as_view(), name='cartitem-create'),
+    path('cartitem/<int:pk>/update/', views.UpdateCartItem.as_view(), name='cartitem-update'),
+    path('cartitem/<int:pk>/delete/', views.DeleteCartItem.as_view(), name='cartitem-delete'),
 ]

@@ -9,3 +9,11 @@ class ReflibConfig(AppConfig):
 class MainpageConfig(AppConfig):
     DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
     name = 'mainpage'
+
+class BookviewConfig(AppConfig):
+    DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+    name = 'bookview'
+
+class CartviewConfig(AppConfig):
+    DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+    name = 'cartviews'
