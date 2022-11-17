@@ -10,7 +10,7 @@ Details of the Book
 <div class="card mb-3" style="max-width: 1240px;">
     <div class="row g-0">
       <div class="col-md-4">
-        <img src="{{ a_book.book_image.url }}" class="img-fluid rounded-start" alt="No Image">
+        <img src="{{ object.book_image.url }}" class="img-fluid rounded-start" alt="No Image">
       </div>
       <div class="col-md-8">
         <div class="card-body">
@@ -21,7 +21,7 @@ Details of the Book
             <b>Annotation:</b> {{ object.book_annotation }}<br>
             <b>Type of the book cover:</b> {{ object.book_cover }}<br>
             <b>Book category:</b> {{ object.category }}<br>
-            <b>Price: </b> {{ object.price_ht }}<br>
+            <b>Price: </b> {{ object.price_ht }}$<br>
           </p>
           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
         </div>

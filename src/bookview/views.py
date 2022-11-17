@@ -23,7 +23,7 @@ class BookView(generic.DetailView):
     template_name = 'bookview/bookview.html'
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['a_book'] = models.Book.objects.get(pk=9)
+        context['a_book'] = models.Book.objects.filter(book_image=self)
         return context
 
 class AddBook(generic.CreateView):
