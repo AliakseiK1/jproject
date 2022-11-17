@@ -18,11 +18,7 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 
 app_name = "loginpage"
-"""
-urlpatterns = [
-    path('', views.user_login, name = 'loginpage'),
-]
-"""
+
 
 urlpatterns = [
     path('', auth_views.LoginView.as_view(template_name='loginpage/loginpage.html'), name = 'login'),   

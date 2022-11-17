@@ -7,13 +7,15 @@ from django.views import generic
 from datetime import datetime
 from django.contrib.auth import settings
 
+
 # Create your models here.
 class Publisher(models.Model):
     pub_name = models.CharField(
         max_length=100,
         #blank=True,
         #null=True
-        verbose_name='Publisher Name')
+        verbose_name='Publisher Name',
+        unique=True)
     pub_country = models.CharField(
         max_length=100,
         verbose_name='Publisher Origin')
@@ -32,7 +34,8 @@ class Publisher(models.Model):
 class Author(models.Model):
     auth_name = models.CharField(
         max_length=100,
-        verbose_name='Author Name')
+        verbose_name='Author Name',
+        unique=True)
     auth_country = models.CharField(
         max_length=100,
         verbose_name='Author Origin')
@@ -63,6 +66,7 @@ class Cover(models.Model):
         max_length=2,
         choices=TYPES_OF_COVER_CHOICES,
         default=HADRCOVER,
+        unique=True,
     )
     def __str__(self):
         return self.types_of_cover
@@ -77,30 +81,10 @@ class Category(models.Model):
         ('NA', 'New Arrival'),
         ('NC', 'No Category'),
     ]
-    types_of_categories = models.CharField(max_length=2, choices=TYPES_OF_CATEGORIES, default = 'NC')
+    types_of_categories = models.CharField(max_length=2, choices=TYPES_OF_CATEGORIES, default = 'NC',unique=True)
     def __str__(self):
         return self.types_of_categories
-    """
-    SALE = 'SL'
-    NEWARRIVAL = 'NA'
-    NOCATEGORY = 'NC'
-    TYPES_OF_CATEGORY_CHOICES = [
-        (SALE, 'On Sale'),
-        (NEWARRIVAL, 'New Arrival'),
-        (NOCATEGORY, 'No Category'),
-    ]
-    types_of_category = models.CharField(
-        max_length=2,
-        choices=TYPES_OF_CATEGORY_CHOICES,
-        default=NOCATEGORY,
-    )
-     def __str__(self):
-        return self.types_of_category
-    """
-    """
-    def is_upperclass(self):
-        return self.types_of_category in {self.SALE, self.NEWARRIVAL, self.NOCATEGORY}
-    """
+   
 
 class MainPage(generic.TemplateView):
     template_name = 'mainpage/mainpage.html'
