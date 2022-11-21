@@ -8,12 +8,12 @@ admin.site.register(models.Cover)
 admin.site.register(models.Category)
 admin.site.register(models.Book)
 
-from cartview import models
-admin.site.register(models.Cart)
-admin.site.register(models.CartItem)
-
 #cartview
+from cartview import models
+
 class CartAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('pk', 'user')
+admin.site.register(models.Cart, CartAdmin)
 class CartItemAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("pk", "book", "quantity", "price_ht", "cart","total","created_at","updated_at")
+admin.site.register(models.CartItem, CartItemAdmin)

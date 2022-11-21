@@ -24,10 +24,10 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.MainPage.as_view(), name = 'main'),
     path('admin/', admin.site.urls),
-    path('reflib/', include('reflib.urls')),
-    path('bookview/', include('bookview.urls')),
-    path('login/', include('loginpage.urls'),name = 'login'),
-    path('cartview/', include('cartview.urls')),
+    path('reflib/', include('reflib.urls', namespace="reflib")),
+    path('bookview/', include('bookview.urls', namespace="bookview")),
+    path('login/', include('loginpage.urls')),
+    path('cartview/', include('cartview.urls', namespace="cartview")),
     ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
