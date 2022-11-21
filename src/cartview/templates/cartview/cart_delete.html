@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block title %}
-Cart
+Delete Cart
 {% endblock title %}
-
+</head>
 {% block body %}
 <body>
-    <h1>Cart</h1>
-    <b>PK{{ object.pk }}</b><br>
-    <b>{{ object.book_image }}</b><br>
-    <b>Name of the Book{{ object.book_name }}</b><br>
-    <b>Author{{ object.book_name }}</b><br>
-    <b>Type of the book cover{{ object.book_cover }}</b><br>
-
+    <h1>Delete Cart</h1>
+    Are you really want to delete the Cart with <b>PK{{ object.pk }}</b> and User Name <b>{{ object.user }}</b> created {{ object.created_at }}</b>?
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" class="btn btn-success" value="Press the button to Confirm">
+    </form>
 </body>
 {% endblock body %}

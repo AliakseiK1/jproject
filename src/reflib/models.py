@@ -99,6 +99,7 @@ class Book(models.Model):
         max_length=100,
         verbose_name='Book Name')
     book_aut = models.ForeignKey(Author, on_delete=models.CASCADE, blank=True, verbose_name='Book Author')
+    publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE, blank=True, verbose_name='Publisher', default=1)
     book_annotation = models.TextField(
         max_length=500,
         blank=False,
@@ -109,7 +110,6 @@ class Book(models.Model):
     price_ht = models.FloatField(verbose_name='Price of the Book', default='1.00')
     created_at = models.DateTimeField(default=datetime.now)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL,null=True, on_delete=models.CASCADE) 
-    #created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return self.book_name
     

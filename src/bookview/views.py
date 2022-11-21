@@ -51,3 +51,28 @@ class DelBook(generic.DeleteView):
     success_url = reverse_lazy("bookview:booklist")
 
 ###################################################################
+# USERVIEW
+class ListBookUs(generic.ListView):
+    model = models.Book
+    template_name = 'bookview/booklist_user.html'
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        return context
+
+# USERVIEW_SALE
+class ListBookSl(generic.ListView):
+    model = models.Book
+    template_name = 'bookview/booklist_sl.html'
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['sale_list'] = models.Book.objects.filter(category_id="2")
+        return context
+
+# USERVIEW_NEW_ARRIVALS
+class ListBookNa(generic.ListView):
+    model = models.Book
+    template_name = 'bookview/booklist_na.html'
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['new_list'] = models.Book.objects.filter(category_id="3")
+        return context

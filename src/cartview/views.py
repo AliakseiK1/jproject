@@ -1,12 +1,34 @@
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView
-
-from .models import Cart, CartItem
+from . import models
+from . models import Cart, CartItem
+from reflib import models as bw_models
 
 ##-------------- Cart Views --------------------------------------
-class DetailCart(DetailView):
-    model = Cart
-    template_name='cartview/cart_detail.html'
+def cart(request):
+    context = {}
+    if request.method == "POST":
+        book_pk = request.POST.get('book_pk')
+        quantity = request.POST.get('quantity')
+        if book_pk and quantity:
+            cart_id = int(request.session.get('cart_id',0))
+            if request.user.is_authenticated:
+                user = request.user
+            else:
+                user = None
+            if cart_id == 0:
+                cart_id = None
+            cart, created = models.Cart.objects.get_or_create(
+                pk=cart_id,
+                defaults={'user': user}
+            )
+            if created:
+                request.session['cart_id'] = cart.pk
+            cart_item = bw_models.Book.objects.get(pk=int(book_pk))
+    return render(
+        request=request,
+        template_name="cartview/cart.thml", context=context
+    )
 
 class ListCart(ListView):
     model = Cart
