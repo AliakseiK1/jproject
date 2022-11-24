@@ -14,6 +14,7 @@ All Books
         <tr>
             <b>
                 <th>Image</th>
+                <th>Details</th>
                 <th>Name</th>
                 <th>Author</th>
                 <th>Piblisher</th>
@@ -21,24 +22,28 @@ All Books
                 <th>Cover</th>
                 <th>Price</th>
                 <th>Add To Cart</th>
-            </b>
-          
+            </b>  
         </tr>
     {% for obj in object_list %}
 
     <tr>
         <td><img src="{{ obj.book_image.url }}" style="width: 6rem;"></td>
-        <td><a href="{% url 'bookview:details_book' pk=obj.pk %}">{{ obj.book_name }}</a></td>
+        <td>
+        <form action="{% url 'bookview:details_book' pk=obj.pk %}" method="get">
+          <button type="submit" class="btn btn-outline-dark mt-auto"><i class="bi bi-eye"></i></button>
+        </form>
+        </td>
+        <td>{{ obj.book_name }}</td>
         <td>{{ obj.book_aut }}</td>
         <td>{{ obj.publisher }}</td>
         <td>{{ obj.book_annotation }}</td>
         <td>{{ obj.book_cover }}</td>
         <td>{{ obj.price_ht }}$</td>
-
+        
         <td>
           <form action="" method="post">
             {% csrf_token %}
-            <button type="submit" class="btn btn-success"><i class="bi bi-cart-plus"></i></button></a>
+            <button type="submit" class="btn btn-outline-success mt-auto"><i class="bi bi-cart-plus"></i></button>
             <input type="number" name="quantity" value="1" step="1" min="1" max="20">
             <input type="hidden" name="book_pk" value=" {{ obj.pk }}">
           </form>

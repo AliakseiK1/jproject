@@ -1,7 +1,6 @@
 from dataclasses import field
 from django import forms
-
-from reflib import models
+from . import models
 
 
 class Book(forms.ModelForm):
