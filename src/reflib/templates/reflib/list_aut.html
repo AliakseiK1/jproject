@@ -24,11 +24,11 @@ All Authors
     {% for obj in object_list %}
 
     <tr>
-        <td><a href="{% url 'reflib:upd_author' pk=obj.pk %}"><button type="button" class="btn btn-warning"><b><i class="bi bi-pencil"></i>{{ obj.pk }}</button></b></button></a></td>
+        <td><a href="{% url 'reflib:upd_author' pk=obj.pk %}"><button type="button" class="btn btn-outline-warning mt-auto"><b><i class="bi bi-pencil"></i>{{ obj.pk }}</button></b></button></a></td>
         <td>{{ obj.auth_name }}</td>
         <td>{{ obj.auth_country }}</td>
         <td>{{ obj.auth_note }}</td>
-        <td><a href="{% url 'reflib:del_author' pk=obj.pk %}"><button type="button" class="btn btn-danger"><b>Delete<i class="bi bi-x-lg"></i></b></button></a></td>
+        <td><a href="{% url 'reflib:del_author' pk=obj.pk %}"><button type="button" class="btn btn-outline-danger mt-auto"><i class="bi bi-trash"></i></button></a></td>
     </tr>
     
     {% endfor %}

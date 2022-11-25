@@ -1,11 +1,12 @@
 from django.shortcuts import render
-from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView
+from django.views import generic
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from . import models
 from . models import Cart, CartItem
-from reflib import models as bw_models
+from bookview import models as bw_models
 
 ##-------------- Cart Views --------------------------------------
-def cart(request):
+def cart_item(request):
     context = {}
     if request.method == "POST":
         book_pk = request.POST.get('book_pk')
@@ -24,10 +25,19 @@ def cart(request):
             )
             if created:
                 request.session['cart_id'] = cart.pk
-            cart_item = bw_models.Book.objects.get(pk=int(book_pk))
+            book = bw_models.Book.objects.get(pk=int(book_pk))
+            price = bw_models.Book.objects.get(price_ht=book_pk)
+            books_in_cart = models.CartItem.objects.create(
+                book=book,
+                cart=cart,
+                quantity=quantity,
+                price_ht=price,
+            )
+
+
     return render(
         request=request,
-        template_name="cartview/cart.thml", context=context
+        template_name="cartview/cartitem_view.html", context=context
     )
 
 class ListCart(ListView):
@@ -49,9 +59,13 @@ class DeleteCart(DeleteView):
 
 
 ##-------------- CartItem Views --------------------------------------
-class DetailCartItem(DetailView):
+
+"""
+class ViewCartItem(generic.TemplateView):
     model = CartItem
-    template_name='cartview/detail_cartitem.html'
+    template_name='cartview/cartitem_view.html'
+
+"""
 
 class ListCartItem(ListView):
     model = CartItem

@@ -1,27 +1,13 @@
 from multiprocessing import context
-from tkinter import Tk
-import _tkinter
 from turtle import update
-from urllib import response
 from django.views import generic
-from django.http import HttpResponse, HttpResponseRedirect
 from . import models, forms
 from django.urls import reverse_lazy
-from django.shortcuts import render
-from django.contrib.auth import authenticate, login
-from django.template import RequestContext
+
 
 # Create your views here.
 #View list of Authors
 
-"""
-def authors_list (request):
-    authors = models.Author.objects.all()
-    responce = f"<h1>List of Authors {request.user.pk}:</h1>"
-    for author in authors:
-        responce += f"Author {author.auth_name} from country {author.auth_country} and special note: {author.auth_note}"
-        return HttpResponse(responce)
-"""
 class ListAuthor(generic.ListView):
     model = models.Author
     template_name = 'reflib/list_aut.html'
@@ -89,52 +75,3 @@ class DelPublisher(generic.DeleteView):
     model = models.Publisher
     template_name = 'reflib/pub_del.html'
     success_url = reverse_lazy("reflib:list_publisher")
-
-
-#############################################
-#View for Mainpage
-class MainPage(generic.TemplateView):
-    model = models.MainPage
-    template_name = 'mainpage/mainpage.html'
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context['sale_book1'] = models.Book.objects.filter(category_id="2").order_by('-created_at')[0]
-        context['sale_book2'] = models.Book.objects.filter(category_id="2").order_by('-created_at')[1]
-        context['sale_book3'] = models.Book.objects.filter(category_id="2").order_by('-created_at')[2]
-        context['sale_book4'] = models.Book.objects.filter(category_id="2").order_by('-created_at')[3]
-        context['fet_book1'] = models.Book.objects.filter(category_id="3").order_by('-created_at')[0]
-        context['fet_book2'] = models.Book.objects.filter(category_id="3").order_by('-created_at')[1]
-        context['fet_book3'] = models.Book.objects.filter(category_id="3").order_by('-created_at')[2]
-        context['fet_book4'] = models.Book.objects.filter(category_id="3").order_by('-created_at')[3]
-        return context
-
-"""
-def main_page (request):
-    mainpage = 'mainpage.html'
-    responce = mainpage
-    return HttpResponse(responce)
-
-def main_page(request):
-    if request.method == 'GET':
-        return render(request, 'mainpage/mainpage.html', context)
-"""
-
-
-#########################################
-#users
-"""
-def user_login(request):
-    if request.method == 'GET':
-        return render(request,'loginpage/loginpage.html', context={})
-    if request.method == 'POST':
-        user = authenticate(
-            request=request,
-            username=request.POST.get('login'),
-            password=request.POST.get('password'),
-        )
-        if user is not None:
-            print(user)
-            login(request, user)
-            return render (request, 'mainpage/mainpage.html', context_instance=RequestContext(request))
-
-"""

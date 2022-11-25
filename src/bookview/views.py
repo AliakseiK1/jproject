@@ -4,8 +4,8 @@ import _tkinter
 from turtle import update
 from django.views import generic
 from django.http import HttpResponse, HttpResponseRedirect
-from bookview import forms
-from reflib import models
+from . import forms
+from . import models
 from django.urls import reverse_lazy
 
 # Create your views here.
