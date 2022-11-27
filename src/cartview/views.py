@@ -34,7 +34,7 @@ def cart(request, *args, **kwargs):
                 cart=cart,
                 quantity=quantity,
                 price_ht=obj_price,
-                total = round(obj_price*quantity, 4)
+                total = round(float(obj_price*quantity),2)
                 )
         
         return render(request=request,
