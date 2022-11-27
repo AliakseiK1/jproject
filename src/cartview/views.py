@@ -4,9 +4,10 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from . import models
 from . models import Cart, CartItem
 from bookview import models as bw_models
+from random import randint
 
-##-------------- Cart Views --------------------------------------
-def cart_item(request):
+
+def cart(request, *args, **kwargs):
     context = {}
     if request.method == "POST":
         book_pk = request.POST.get('book_pk')
@@ -21,24 +22,25 @@ def cart_item(request):
                 cart_id = None
             cart, created = models.Cart.objects.get_or_create(
                 pk=cart_id,
-                defaults={'user': user}
+                defaults={"user": user}
             )
             if created:
                 request.session['cart_id'] = cart.pk
             book = bw_models.Book.objects.get(pk=int(book_pk))
-            price = bw_models.Book.objects.get(price_ht=book_pk)
+            obj = bw_models.Book.objects.get(pk=int(book_pk))
+            obj_price = int(obj.price_ht)
             books_in_cart = models.CartItem.objects.create(
                 book=book,
                 cart=cart,
                 quantity=quantity,
-                price_ht=price,
-            )
+                price_ht=obj_price,
+                total = obj_price*quantity
+                )
+        
+        return render(request=request,
+    template_name="cartview/cart.html",
+    context=context)
 
-
-    return render(
-        request=request,
-        template_name="cartview/cartitem_view.html", context=context
-    )
 
 class ListCart(ListView):
     model = Cart

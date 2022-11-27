@@ -7,6 +7,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from . import forms
 from . import models
 from django.urls import reverse_lazy
+from bookview.models import Book
+
 
 # Create your views here.
 #View list of Bookview
@@ -14,6 +16,8 @@ from django.urls import reverse_lazy
 class ListBook(generic.ListView):
     model = models.Book
     template_name = 'bookview/booklist.html'
+    paginate_by = 5
+    model = Book
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         return context
@@ -55,6 +59,7 @@ class DelBook(generic.DeleteView):
 class ListBookUs(generic.ListView):
     model = models.Book
     template_name = 'bookview/booklist_user.html'
+    paginate_by = 5
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         return context
@@ -63,6 +68,7 @@ class ListBookUs(generic.ListView):
 class ListBookSl(generic.ListView):
     model = models.Book
     template_name = 'bookview/booklist_sl.html'
+    paginate_by = 5
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['sale_list'] = models.Book.objects.filter(category_id="2")
@@ -72,6 +78,7 @@ class ListBookSl(generic.ListView):
 class ListBookNa(generic.ListView):
     model = models.Book
     template_name = 'bookview/booklist_na.html'
+    paginate_by = 5
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['new_list'] = models.Book.objects.filter(category_id="3")
