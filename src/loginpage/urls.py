@@ -21,5 +21,6 @@ app_name = "loginpage"
 
 
 urlpatterns = [
-    path('', auth_views.LoginView.as_view(template_name='loginpage/loginpage.html'), name = 'login'),   
+    path('login', auth_views.LoginView.as_view(template_name='loginpage/loginpage.html'), name = 'login'),
+    path('logout', auth_views.LoginView.as_view(template_name='loginpage/loginpage.html'), name = 'logout'),
 ]

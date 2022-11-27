@@ -23,11 +23,12 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('', views.MainPage.as_view(), name = 'main'),
     path('admin/', admin.site.urls),
+    path('', views.MainPage.as_view(), name = 'main'),
+    path("accounts/", include("django.contrib.auth.urls")),
     path('reflib/', include('reflib.urls', namespace="reflib")),
     path('bookview/', include('bookview.urls', namespace="bookview")),
-    path('login/', include('loginpage.urls')),
+    path('profiles/', include('loginpage.urls')),
     path('cartview/', include('cartview.urls', namespace="cartview")),
     ]
 if settings.DEBUG:

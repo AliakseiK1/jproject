@@ -31,11 +31,18 @@
                                     <li><a class="dropdown-item" href="/bookview/list_book_us/">All Products</a></li>
                                     <li><hr class="dropdown-divider" /></li>
                                     <li><a class="dropdown-item" href="/bookview/list_book_na/">New Arrivals</a></li>
-                                    <li><a class="dropdown-item" href="/bookview/list_book_sl/">Sale</a></li>
+                                    <li><a class="dropdown-item" href="/bookview/list_book_sl/">Goods on Sale</a></li>
                                 </ul>
                             </li>
                             {% if user.is_authenticated %}
                             <li class="nav-item"><a class="nav-link active" aria-current="page" >Welcome, <i>{{ user.username }}</i></a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-circle"></i></a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="{% url 'logout' %}">LogOut</a></li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <li><a class="dropdown-item" href="#">User Profile (TBD)</a></li>
+                                </ul>
                             {% else %}
                             <li class="nav-item"><a class="nav-link active" aria-current="page">Welcome, <i>New user!</i></a></li><li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'loginpage:login' %}"> Please <b>log in.</b></a></li>
                             {% endif %}
@@ -56,7 +63,7 @@
                             {% endif %}
                             
                         </ul>
-                        <form class="d-flex">
+                        <form class="d-flex" action="{% url 'cartview:cart' %}" method="get">
                             <button class="btn btn-outline-dark" type="submit">
                                 <i class="bi bi-cart-check"></i>
                                 User Cart

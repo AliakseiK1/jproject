@@ -4,8 +4,20 @@ from . import views
 app_name = "cartview"
 
 # Cart Urls
+
 urlpatterns = [
-    #path('cart/', views.cart, name='cart'),
+    path('cart/', views.cart, name='cart'),
+    #path('cart_item', views.cart_item, name='cart_item'),
+    #path('cart_item', views.ViewCartItem.as_view(), name='cart_item'),
+    
+
+]
+
+
+
+"""
+urlpatterns = [
+    path('cart/', views.cart, name='cart'),
     path('cart-list', views.ListCart.as_view(), name='cart_list'),
     path('cart/create/', views.CreateCart.as_view(), name='cart_create'),
     path('cart/<int:pk>/update/', views.UpdateCart.as_view(), name='cart_update'),
@@ -21,3 +33,5 @@ urlpatterns += [
     path('cartitem/<int:pk>/update/', views.UpdateCartItem.as_view(), name='cartitem_update'),
     path('cartitem/<int:pk>/delete/', views.DeleteCartItem.as_view(), name='cartitem_delete'),
 ]
+
+"""
