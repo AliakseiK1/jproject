@@ -41,7 +41,7 @@ All Books
         <td>{{ obj.price_ht }}$</td>
         
         <td>
-          <form action="" method="post">
+          <form action="{% url 'cartview:cart' %}" method="post">
             {% csrf_token %}
             <button type="submit" class="btn btn-outline-success mt-auto"><i class="bi bi-cart-plus"></i></button>
             <input type="number" name="quantity" value="1" step="1" min="1" max="20">
