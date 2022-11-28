@@ -10,7 +10,7 @@
         <link href="{% static 'ref/bs/css/bootstrap.min.css' %}" rel="stylesheet">
         <link href="{% static 'ref/bs/icon/bootstrap-icons.css' %}" rel="stylesheet">
         <link href="{% static 'ref/bs/css/styles.css' %}" rel="stylesheet"> <!--core stylesheet-->
-        <link rel="icon" type="image/x-icon" href="ref/bs/icon/favicon.ico" />
+        <link href="{% static 'ref/bs/icon/favicon.ico' %}" rel="icon" >
         <script src="{% static 'ref/bs/js/bootstrap.min.js' %}"></script>
         <script src="{% static 'ref/bs/js/bootstrap.bundle.min.js' %}"></script> <!-- Bootstrap core JS-->
 
@@ -48,7 +48,7 @@
                             {% endif %}
                             {% if perms.contenttypes.change_contenttype %}
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Site administration</a>
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-gear-wide-connected"></i></i></a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="/admin">Django Admin</a></li>
                                     <li><hr class="dropdown-divider" /></li>

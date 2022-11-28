@@ -52,7 +52,7 @@ class UpdBook(generic.UpdateView):
 class DelBook(generic.DeleteView):
     model = models.Book
     template_name = 'bookview/book_del.html'
-    success_url = reverse_lazy("bookview:booklist")
+    success_url = reverse_lazy("bookview:list_book")
 
 ###################################################################
 # USERVIEW

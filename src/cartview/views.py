@@ -5,6 +5,7 @@ from . import models
 from . models import Cart, CartItem
 from bookview import models as bw_models
 from random import randint
+from . import forms
 
 
 def cart(request, *args, **kwargs):
@@ -34,7 +35,7 @@ def cart(request, *args, **kwargs):
                 cart=cart,
                 quantity=quantity,
                 price_ht=obj_price,
-                total = obj_price*quantity,
+                total = obj_price*int(quantity),
                 )
         
         return render(request=request,
@@ -81,6 +82,16 @@ class CreateCartItem(CreateView):
 class UpdateCartItem(UpdateView):
     model = CartItem
     template_name = 'cartview/cartitem_update.html'
+
+class UpdCartItem(generic.UpdateView):
+    model = models.CartItem
+    form_class = forms.CartItem
+    template_name = 'cartview/cartitem_add.upd.html'
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['operation'] = 'Update'
+        return context
+
 
 class DeleteCartItem(DeleteView):
     model = Cart
