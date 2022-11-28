@@ -21,7 +21,7 @@ class Book(models.Model):
         verbose_name='Annotation')
     book_cover = models.ForeignKey(Cover, on_delete=models.CASCADE, blank=True, verbose_name='Book Cover')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, verbose_name='Category')
-    price_ht = models.FloatField(verbose_name='Price of the Book', default='1.00')
+    price_ht = models.DecimalField(verbose_name='Price of the Book', default='1.00',blank=True, max_digits=5, decimal_places=2)
     created_at = models.DateTimeField(default=datetime.now)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL,null=True, on_delete=models.PROTECT) 
     def __str__(self):

@@ -7,7 +7,7 @@ from . import models
 class Cart(forms.ModelForm):
     class Meta:
         model = models.Cart
-        fields = ["user","created_at"]
+        fields = ["user"]
 
 class CartItem(forms.ModelForm):
     class Meta:
