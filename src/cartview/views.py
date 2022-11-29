@@ -6,10 +6,17 @@ from . models import Cart, CartItem
 from bookview import models as bw_models
 from random import randint
 from . import forms
+from django.urls import reverse_lazy
+
+class DeleteCartItem(DeleteView):
+    model = models.CartItem
+    success_url = reverse_lazy("cartview:cart")
+    template_name = 'cartview/cartitem_delete.html'
 
 
 def cart(request, *args, **kwargs):
     context = {}
+    context['cart'] = None
     if request.method == "POST":
         book_pk = request.POST.get('book_pk')
         quantity = request.POST.get('quantity')
@@ -25,6 +32,7 @@ def cart(request, *args, **kwargs):
                 pk=cart_id,
                 defaults={"user": user}
             )
+            context["cart"] = cart
             if created:
                 request.session['cart_id'] = cart.pk
             book = bw_models.Book.objects.get(pk=int(book_pk))
@@ -37,51 +45,21 @@ def cart(request, *args, **kwargs):
                 price_ht=obj_price,
                 total = obj_price*int(quantity),
                 )
-        
-        return render(request=request,
-    template_name="cartview/cart.html",
-    context=context)
-
-
-class ListCart(ListView):
-    model = Cart
-    context_object_name = 'carts'
-    template_name='cartview/carts_list.html'
-
-class CreateCart(CreateView):
-    model = Cart
-    template_name = 'cartview/cart_create.html'
-
-class UpdateCart(UpdateView):
-    model = Cart
-    template_name = 'cartview/cart_update.html'
-
-class DeleteCart(DeleteView):
-    model = Cart
-    template_name = 'cartview/cart_delete.html'
-
-
+    else:
+        print(request.user)
+        print(request.session.get('cart_id'))
+        cart_id = request.session.get('cart_id')
+        if cart_id:
+            cart = models.Cart.objects.get(pk=cart_id)
+            context['cart'] = cart
+    return render(
+        request,
+        template_name='cartview/cart.html',
+        context = context
+        )
 ##-------------- CartItem Views --------------------------------------
 
-"""
-class ViewCartItem(generic.TemplateView):
-    model = CartItem
-    template_name='cartview/cartitem_view.html'
 
-"""
-
-class ListCartItem(ListView):
-    model = CartItem
-    context_object_name = 'cartitems'
-    template_name='cartview/cartitems_list.html'
-
-class CreateCartItem(CreateView):
-    model = CartItem
-    template_name = 'cartview/cartitem_create.html'
-
-class UpdateCartItem(UpdateView):
-    model = CartItem
-    template_name = 'cartview/cartitem_update.html'
 
 class UpdCartItem(generic.UpdateView):
     model = models.CartItem
@@ -91,8 +69,4 @@ class UpdCartItem(generic.UpdateView):
         context = super().get_context_data(*args, **kwargs)
         context['operation'] = 'Update'
         return context
-
-
-class DeleteCartItem(DeleteView):
-    model = Cart
-    template_name = 'cartview/cartitem_delete.html'
+    
