@@ -7,11 +7,10 @@ app_name = "cartview"
 
 urlpatterns = [
     path('cart/', views.cart, name='cart'),
-    path('cartitem/<int:pk>/update/', views.UpdateCartItem.as_view(), name='cartitem_update'),
+    path('cartitem_del/<int:pk>/', views.DeleteCartItem.as_view(), name='cartitem_del'),
     #path('cart_item', views.cart_item, name='cart_item'),
     #path('cart_item', views.ViewCartItem.as_view(), name='cart_item'),
     
-
 ]
 
 

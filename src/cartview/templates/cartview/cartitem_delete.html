@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block title %}
-Cart
+Delete Position
 {% endblock title %}
-
+</head>
 {% block body %}
 <body>
-    <h1>Cart</h1>
-    <b>PK{{ object.pk }}</b><br>
-    <b>{{ object.book_image }}</b><br>
-    <b>Name of the Book{{ object.book_name }}</b><br>
-    <b>Author{{ object.book_name }}</b><br>
-    <b>Type of the book cover{{ object.book_cover }}</b><br>
-
+    <h1>Delete Position?</h1>
+    Are you really want to delete the Item with <b>PK{{ object.pk }}</b> and Name <b>{{ object.book }}</b>?
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-outline-success mt-auto">Press the button to Confirm</button>
+    </form>
 </body>
 {% endblock body %}
