@@ -11,7 +11,7 @@ Delete Publisher
     <form action="" method="post">
         {% csrf_token %}
         {{ form|crispy }}
-        <input type="submit" class="btn btn-outline-success mt-auto" value="Press the button to Confirm">
+        <input type="submit" class="btn btn-outline-danger mt-auto" value="Press the button to Confirm">
     </form>
 </body>
 {% endblock body %}

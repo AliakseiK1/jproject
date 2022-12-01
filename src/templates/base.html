@@ -24,9 +24,8 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'main' %}">Home</a></li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-shop-window"></i> Shop</a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="/bookview/list_book_us/">All Products</a></li>
                                     <li><hr class="dropdown-divider" /></li>
@@ -37,18 +36,18 @@
                             {% if user.is_authenticated %}
                             <li class="nav-item"><a class="nav-link active" aria-current="page" >Welcome, <i>{{ user.username }}</i></a></li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-circle"></i></a>
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-circle"></i> User</a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="{% url 'logout' %}">LogOut</a></li>
                                     <li><hr class="dropdown-divider" /></li>
                                     <li><a class="dropdown-item" href="#">User Profile (TBD)</a></li>
                                 </ul>
                             {% else %}
-                            <li class="nav-item"><a class="nav-link active" aria-current="page">Welcome, <i>New user!</i></a></li><li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'loginpage:login' %}"> Please <b>log in.</b></a></li>
+                            <li class="nav-item"><a class="nav-link active" aria-current="page">Welcome to the shop!</a></li><li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'loginpage:login' %}"><i> Please <b>log in.</b></i></a></li>
                             {% endif %}
                             {% if perms.contenttypes.change_contenttype %}
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-gear-wide-connected"></i></i></a>
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-gear-wide-connected"></i> Admin Screens</a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="/admin">Django Admin</a></li>
                                     <li><hr class="dropdown-divider" /></li>
