@@ -30,6 +30,24 @@ Your Cart, {{user}}
                 </td>
             </tr>
             {% endfor %}
+            <tr>
+                <td colspan="2"></td>
+                <td><b>Total:<b></td>
+                <td>{{ cart.total_price }}</td>
+                <td></td>
+            </tr>
+            
+            <tr>
+                <td colspan="4"></td>
+                <td>
+                    <form action="{% url 'cartview:submit_order' %}" method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button type="submit" class="btn btn-outline-success mt-auto">Procced to Checkout</button>
+                    </form>
+                </td>
+            </tr>
+
     
         <div class="pagination">
             <span class="step-links">

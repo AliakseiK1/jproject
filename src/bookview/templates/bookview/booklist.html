@@ -14,7 +14,7 @@ ADMIN: All Books
         <tr>
             <b>
                 <th>PK/Edit</th>
-                <th>Image</th>
+                <th>Details..</th>
                 <th>Name</th>
                 <th>Author</th>
                 <th>Piblisher</th>
@@ -32,8 +32,12 @@ ADMIN: All Books
 
     <tr>
         <td><a href="{% url 'bookview:upd_book' pk=obj.pk %}"><button type="button" class="btn btn-outline-warning mt-auto"><b><i class="bi bi-pencil"></i>{{ obj.pk }}</button></b></button></a></td>
-        <td><img src="{{ obj.book_image.url }}" style="width: 6rem;"></td>
-        <td><a href="{% url 'bookview:details_book' pk=obj.pk %}">{{ obj.book_name }}</a></td>
+        <td>
+            <a href = "{% url 'bookview:details_book' pk=obj.pk %}">
+              <img src="{{ obj.book_image.url }}" style="width: 6rem;" />
+            </a>
+          </td>
+        <td>{{ obj.book_name }}</td>
         <td>{{ obj.book_aut }}</td>
         <td>{{ obj.publisher }}</td>
         <td>{{ obj.book_annotation }}</td>
