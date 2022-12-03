@@ -56,11 +56,6 @@ def cart(request, *args, **kwargs):
         if cart_id:
             cart = models.Cart.objects.get(pk=cart_id)
             context['cart'] = cart
-    count_cart = models.Order.objects.count()
-    print(count_cart)
-    
-    current_user = request.user
-    print(current_user)
     context['form'] = forms.OrderForm
     return render(
         request,

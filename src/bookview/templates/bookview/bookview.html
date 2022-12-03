@@ -6,7 +6,7 @@ Details of the Book
 
 {% block body %}
 <body>
-<h1>Details Of the Book</h1>
+<h2>{{ object.book_aut }}: {{ object.book_name }}</h2>
 <div class="card mb-3" style="max-width: 1240px;">
     <div class="row g-0">
       <div class="col-md-4">
@@ -15,20 +15,35 @@ Details of the Book
       <div class="col-md-8">
         <div class="card-body">
           <p class="card-text">
-            <b>PK:</b> {{ object.pk }}<br>
-            <b>Name of the Book:</b> {{ object.book_name }}<br>
-            <b>Author:</b> {{ object.book_name }}<br>
-            <b>Publisher:</b> {{ object.publisher }}<br>
             <b>Annotation:</b> {{ object.book_annotation }}<br>
+            <b>Publisher:</b> {{ object.publisher }}<br>
             <b>Type of the book cover:</b> {{ object.book_cover }}<br>
             <b>Book category:</b> {{ object.category }}<br>
             <b>Price: </b> {{ object.price_ht }}$<br>
           </p>
+          <td>
+          <form action="{% url 'cartview:cart' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-success mt-auto"><i class="bi bi-cart-plus"></i></button>
+            <input type="number" name="quantity" value="1" step="1" min="1" max="20">
+            <input type="hidden" name="book_pk" value=" {{ obj.pk }}">
+          </form>
+        </td>
           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
         </div>
       </div>
     </div>
   </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 </body>
 
 {% endblock body %}
