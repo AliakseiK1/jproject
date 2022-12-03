@@ -26,8 +26,15 @@ MegaReader - Shop Homepage
                     <div class="card h-100">
                     <!-- Sale badge-->
                         <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+                        <!-- See more badge-->
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; left: 0.5rem"><i class="bi bi-eye"></i></div>
                         <!-- Product image-->
-                        <img class="card-img-top" src="{{ sale_book1.book_image.url }}" alt="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" />
+                        <td>
+                            <a href = "bookview/detls_book/{{ sale_book1.pk }}">
+                                <img class="card-img-top" src="{{ sale_book1.book_image.url }}" alt="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"/>
+                            </a>
+                        </td>
+                            
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -38,28 +45,20 @@ MegaReader - Shop Homepage
                                 ${{ sale_book1.price_ht}}
                             </div>
                         </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <td>
-                                <form action="bookview/detls_book/1" method="get">
-                                    <button type="submit" class="btn btn-outline-dark mt-auto"><i class="bi bi-eye"> See more details ...</i></button>
-                                </form><br>
-                                <form action="{% url 'cartview:cart' %}" method="post">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-outline-success mt-auto"><i class="bi bi-cart-plus"></i></button>
-                                    <input type="number" name="quantity" value="1" step="1" min="1" max="20">
-                                    <input type="hidden" name="book_pk" value=" {{ sale_book1.pk }}">
-                                </form>
-                            </td>
-                        </div>
                     </div>
                 </div>
                 <div class="col mb-5"><!--2 Card-->
                     <div class="card h-100">
                         <!-- Sale badge-->
                         <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+                        <!-- See more badge-->
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; left: 0.5rem"><i class="bi bi-eye"></i></div>
                         <!-- Product image-->
-                        <img class="card-img-top" src="{{ sale_book2.book_image.url }}" alt="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" />
+                        <td>
+                            <a href = "bookview/detls_book/{{ sale_book2.pk }}">
+                                <img class="card-img-top" src="{{ sale_book2.book_image.url }}" alt="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"/>
+                            </a>
+                        </td>
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -72,27 +71,20 @@ MegaReader - Shop Homepage
                             </div>
                         </div>
                         <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <td>
-                                <form action="bookview/detls_book/2" method="get">
-                                    <button type="submit" class="btn btn-outline-dark mt-auto"><i class="bi bi-eye"> See more details ...</i></button>
-                                </form><br>
-                                <form action="{% url 'cartview:cart' %}" method="post">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-outline-success mt-auto"><i class="bi bi-cart-plus"></i></button>
-                                    <input type="number" name="quantity" value="1" step="1" min="1" max="20">
-                                    <input type="hidden" name="book_pk" value=" {{ obj.pk }}">
-                                </form>
-                            </td>
-                        </div>
                     </div>
                 </div>
                 <div class="col mb-5"><!--3 Card-->
                     <div class="card h-100">
                         <!-- Sale badge-->
                         <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+                        <!-- See more badge-->
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; left: 0.5rem"><i class="bi bi-eye"></i></div>
                         <!-- Product image-->
-                        <img class="card-img-top" src="{{ sale_book3.book_image.url }}" alt="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" />
+                        <td>
+                            <a href = "bookview/detls_book/{{ sale_book3.pk }}">
+                                <img class="card-img-top" src="{{ sale_book3.book_image.url }}" alt="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"/>
+                            </a>
+                        </td>
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -104,27 +96,20 @@ MegaReader - Shop Homepage
                             </div>
                         </div>
                         <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <td>
-                                <form action="bookview/detls_book/3" method="get">
-                                    <button type="submit" class="btn btn-outline-dark mt-auto"><i class="bi bi-eye"> See more details ...</i></button>
-                                </form><br>
-                                <form action="{% url 'cartview:cart' %}" method="post">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-outline-success mt-auto"><i class="bi bi-cart-plus"></i></button>
-                                    <input type="number" name="quantity" value="1" step="1" min="1" max="20">
-                                    <input type="hidden" name="book_pk" value=" {{ obj.pk }}">
-                                </form>
-                            </td>
-                        </div>
                     </div>
                 </div>
                 <div class="col mb-5"><!--4 Card-->
                     <div class="card h-100">
                     <!-- Sale badge-->
                         <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+                        <!-- See more badge-->
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; left: 0.5rem"><i class="bi bi-eye"></i></div>
                         <!-- Product image-->
-                        <img class="card-img-top" src="{{ sale_book4.book_image.url }}" alt="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" />
+                        <td>
+                            <a href = "bookview/detls_book/{{ sale_book4.pk }}">
+                                <img class="card-img-top" src="{{ sale_book4.book_image.url }}" alt="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"/>
+                            </a>
+                        </td>
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -137,25 +122,18 @@ MegaReader - Shop Homepage
                             </div>
                         </div>
                         <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <td>
-                                <form action="bookview/detls_book/4" method="get">
-                                    <button type="submit" class="btn btn-outline-dark mt-auto"><i class="bi bi-eye"> See more details ...</i></button>
-                                </form><br>
-                                <form action="{% url 'cartview:cart' %}" method="post">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-outline-success mt-auto"><i class="bi bi-cart-plus"></i></button>
-                                    <input type="number" name="quantity" value="1" step="1" min="1" max="20">
-                                    <input type="hidden" name="book_pk" value=" {{ obj.pk }}">
-                                </form>
-                            </td>
-                        </div>
                     </div>
                 </div>
                 <div class="col mb-5"><!--5 Card-->
                     <div class="card h-100">
+                        <!-- See more badge-->
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; left: 0.5rem"><i class="bi bi-eye"></i></div>
                         <!-- Product image-->
-                        <img class="card-img-top" src="{{ fet_book1.book_image.url }}" alt="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" />
+                        <td>
+                            <a href = "bookview/detls_book/{{ fet_book1.pk }}">
+                                <img class="card-img-top" src="{{ fet_book1.book_image.url }}" alt="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"/>
+                            </a>
+                        </td>
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -173,26 +151,18 @@ MegaReader - Shop Homepage
                                 ${{ fet_book1.price_ht}}
                             </div>
                         </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <td>
-                                <form action="bookview/detls_book/5" method="get">
-                                    <button type="submit" class="btn btn-outline-dark mt-auto"><i class="bi bi-eye"> See more details ...</i></button>
-                                </form><br>
-                                <form action="{% url 'cartview:cart' %}" method="post">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-outline-success mt-auto"><i class="bi bi-cart-plus"></i></button>
-                                    <input type="number" name="quantity" value="1" step="1" min="1" max="20">
-                                    <input type="hidden" name="book_pk" value=" {{ obj.pk }}">
-                                </form>
-                            </td>
-                        </div>
                     </div>
                 </div>
                 <div class="col mb-5"><!--6 Card-->
                     <div class="card h-100">
+                        <!-- See more badge-->
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; left: 0.5rem"><i class="bi bi-eye"></i></div>
                         <!-- Product image-->
-                        <img class="card-img-top" src="{{ fet_book2.book_image.url }}" alt="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" />
+                        <td>
+                            <a href = "bookview/detls_book/{{ fet_book2.pk }}">
+                                <img class="card-img-top" src="{{ fet_book2.book_image.url }}" alt="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"/>
+                            </a>
+                        </td>
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -210,26 +180,18 @@ MegaReader - Shop Homepage
                                 ${{ fet_book2.price_ht}}
                             </div>
                         </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <td>
-                                <form action="bookview/detls_book/6" method="get">
-                                    <button type="submit" class="btn btn-outline-dark mt-auto"><i class="bi bi-eye"> See more details ...</i></button>
-                                </form><br>
-                                <form action="{% url 'cartview:cart' %}" method="post">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-outline-success mt-auto"><i class="bi bi-cart-plus"></i></button>
-                                    <input type="number" name="quantity" value="1" step="1" min="1" max="20">
-                                    <input type="hidden" name="book_pk" value=" {{ obj.pk }}">
-                                </form>
-                            </td>
-                        </div>
                     </div>
                 </div>
                 <div class="col mb-5"><!--7 Card-->
                     <div class="card h-100">
+                        <!-- See more badge-->
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; left: 0.5rem"><i class="bi bi-eye"></i></div>
                         <!-- Product image-->
-                        <img class="card-img-top" src="{{ fet_book3.book_image.url }}" alt="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" />
+                        <td>
+                            <a href = "bookview/detls_book/{{ fet_book3.pk }}">
+                                <img class="card-img-top" src="{{ fet_book3.book_image.url }}" alt="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"/>
+                            </a>
+                        </td>
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -248,25 +210,18 @@ MegaReader - Shop Homepage
                             </div>
                         </div>
                         <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <td>
-                                <form action="bookview/detls_book/7" method="get">
-                                    <button type="submit" class="btn btn-outline-dark mt-auto"><i class="bi bi-eye"> See more details ...</i></button>
-                                </form><br>
-                                <form action="{% url 'cartview:cart' %}" method="post">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-outline-success mt-auto"><i class="bi bi-cart-plus"></i></button>
-                                    <input type="number" name="quantity" value="1" step="1" min="1" max="20">
-                                    <input type="hidden" name="book_pk" value=" {{ obj.pk }}">
-                                </form>
-                            </td>
-                        </div>
                     </div>
                 </div>
                 <div class="col mb-5"><!--8 Card-->
                     <div class="card h-100">
+                        <!-- See more badge-->
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; left: 0.5rem"><i class="bi bi-eye"></i></div>
                         <!-- Product image-->
-                        <img class="card-img-top" src="{{ fet_book4.book_image.url }}" alt="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" />
+                        <td>
+                            <a href = "bookview/detls_book/{{ fet_book4.pk }}">
+                                <img class="card-img-top" src="{{ fet_book4.book_image.url }}" alt="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"/>
+                            </a>
+                        </td>
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -283,20 +238,6 @@ MegaReader - Shop Homepage
                                 <!-- Product price-->
                                 ${{ fet_book4.price_ht}}
                             </div>
-                        </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <td>
-                                <form action="bookview/detls_book/8" method="get">
-                                    <button type="submit" class="btn btn-outline-dark mt-auto"><i class="bi bi-eye"> See more details ...</i></button>
-                                </form><br>
-                                <form action="{% url 'cartview:cart' %}" method="post">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-outline-success mt-auto"><i class="bi bi-cart-plus"></i></button>
-                                    <input type="number" name="quantity" value="1" step="1" min="1" max="20">
-                                    <input type="hidden" name="book_pk" value=" {{ obj.pk }}">
-                                </form>
-                            </td>
                         </div>
                     </div>
                 </div>

@@ -9,7 +9,6 @@ from . import models
 from django.urls import reverse_lazy
 from bookview.models import Book
 
-
 # Create your views here.
 #View list of Bookview
 
@@ -71,7 +70,8 @@ class ListBookSl(generic.ListView):
     paginate_by = 5
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['sale_list'] = models.Book.objects.filter(category_id="2")
+        category_sl = models.Category.objects.filter(types_of_categories="SL")[0]
+        context['sale_list'] = models.Book.objects.filter(category_id=category_sl)
         return context
 
 # USERVIEW_NEW_ARRIVALS
@@ -81,5 +81,6 @@ class ListBookNa(generic.ListView):
     paginate_by = 5
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['new_list'] = models.Book.objects.filter(category_id="3")
+        category_na = models.Category.objects.filter(types_of_categories="NA")[0]
+        context['new_list'] = models.Book.objects.filter(category_id=category_na)
         return context
