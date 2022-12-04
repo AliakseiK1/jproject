@@ -7,6 +7,11 @@ Details of the Book
 {% block body %}
 <body>
 <h2>{{ object.book_aut }}: {{ object.book_name }}</h2>
+<br>
+    <form class="d-flex" action="{% url 'bookview:list_book_user' %}" method="get">
+      <button class="btn btn-outline-secondary" type="submit"></i><i class="bi bi-arrow-left-square"></i> Back to the List of Books</button>
+    </form><br>
+
 <div class="card mb-3" style="max-width: 1240px;">
     <div class="row g-0">
       <div class="col-md-4">
@@ -26,7 +31,7 @@ Details of the Book
             {% csrf_token %}
             <button type="submit" class="btn btn-outline-success mt-auto">Add to Cart <i class="bi bi-cart-plus"></i></button>
             <input type="number" name="quantity" value="1" step="1" min="1" max="20">
-            <input type="hidden" name="book_pk" value=" {{ obj.pk }}">
+            <input type="hidden" name="book_pk" value=" {{ object.pk }}">
           </form>
         </td>
           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
@@ -34,13 +39,6 @@ Details of the Book
       </div>
     </div>
   </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
   <br>
   <br>
   <br>

@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'bookview',
     'loginpage',
     'cartview',
-]
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
