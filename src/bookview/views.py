@@ -9,13 +9,13 @@ from . import models
 from django.urls import reverse_lazy
 from bookview.models import Book
 
+
 # Create your views here.
 #View list of Bookview
 
 class ListBook(generic.ListView):
     model = models.Book
     template_name = 'bookview/booklist.html'
-    paginate_by = 5
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         return context
@@ -32,7 +32,7 @@ class AddBook(generic.CreateView):
     model = models.Book
     form_class = forms.Book
     template_name = 'bookview/book_add.upd.html'
-        
+
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['operation'] = 'Add'
@@ -51,7 +51,7 @@ class UpdBook(generic.UpdateView):
 class DelBook(generic.DeleteView):
     model = models.Book
     template_name = 'bookview/book_del.html'
-    success_url = reverse_lazy("bookview:list_book")
+    success_url = reverse_lazy("bookview:booklist")
 
 ###################################################################
 # USERVIEW
