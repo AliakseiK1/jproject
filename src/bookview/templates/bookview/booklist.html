@@ -8,8 +8,11 @@ ADMIN: All Books
 </head>
 <body>
     <h1 style ="text-align:center;">ADMIN: List of Books</h1><br>
-<div class="container">
 
+<div class="container">
+    <form class="d-flex" action="{% url 'bookview:add_book' %}" method="get">
+      <button class="btn btn-outline-warning" type="submit"></i><i class="bi bi-plus-square"></i> Add New Book</button>
+    </form><br>
   <table class="table table-striped table-hover">
         <tr>
             <b>

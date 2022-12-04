@@ -24,7 +24,7 @@ Details of the Book
           <td>
           <form action="{% url 'cartview:cart' %}" method="post">
             {% csrf_token %}
-            <button type="submit" class="btn btn-outline-success mt-auto"><i class="bi bi-cart-plus"></i></button>
+            <button type="submit" class="btn btn-outline-success mt-auto">Add to Cart <i class="bi bi-cart-plus"></i></button>
             <input type="number" name="quantity" value="1" step="1" min="1" max="20">
             <input type="hidden" name="book_pk" value=" {{ obj.pk }}">
           </form>
