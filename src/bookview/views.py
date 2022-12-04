@@ -32,7 +32,7 @@ class AddBook(generic.CreateView):
     model = models.Book
     form_class = forms.Book
     template_name = 'bookview/book_add.upd.html'
-    
+        
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['operation'] = 'Add'
