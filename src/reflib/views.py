@@ -11,6 +11,8 @@ from django.urls import reverse_lazy
 class ListAuthor(generic.ListView):
     model = models.Author
     template_name = 'reflib/list_aut.html'
+    paginate_by = 5
+
 
 class DetailAuthor(generic.DetailView):
     model = models.Author
@@ -47,6 +49,8 @@ class DelAuthor(generic.DeleteView):
 class ListPublisher(generic.ListView):
     model = models.Publisher
     template_name = 'reflib/pub_list.html'
+    paginate_by = 5
+
 
 class DetailPublisher(generic.DetailView):
     model = models.Publisher
