@@ -16,6 +16,8 @@ Including another URLconf
 from reflib import views
 from django.urls import path
 from django.contrib.auth import views as auth_views
+from .views import SignUpView
+
 
 app_name = "loginpage"
 
@@ -23,4 +25,6 @@ app_name = "loginpage"
 urlpatterns = [
     path('login', auth_views.LoginView.as_view(template_name='loginpage/loginpage.html'), name = 'login'),
     path('logout', auth_views.LoginView.as_view(template_name='loginpage/loginpage.html'), name = 'logout'),
+    path('signup/', SignUpView.as_view(), name="signup"),
+
 ]
