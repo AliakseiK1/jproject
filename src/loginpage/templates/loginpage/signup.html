@@ -1,19 +1,18 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block title %}
-{{ operation }} Book
+Signup
 {% endblock title %}
-
-        {% block body %}
+{% block body %}
         </head>
             <body>
-                <h1>{{ operation }} Book</h1>
+                <h1>Sign Up</h1>
                 <div class="col-lg-6">
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form method="post">
                         {% csrf_token %}
                         {{ form|crispy }}
-                        <input type="submit" class="btn btn-outline-success mt-auto" value="{{ operation }}">
+                        <button class="btn btn-outline-success" type="submit">Sign Up</button>
                     </form>
                 </div>
             </body>
-        {% endblock body %}
+{% endblock body %}

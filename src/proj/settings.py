@@ -151,3 +151,9 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 LOGIN_REDIRECT_URL = "main"
 LOGOUT_REDIRECT_URL = "main"
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = BASE_DIR / "sent_emails"

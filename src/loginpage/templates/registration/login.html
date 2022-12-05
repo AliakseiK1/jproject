@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Login
+{% endblock title %}
+{% block body %}
+        </head>
+        <body>
+        <h1>Please, provide your credentials</h1>
+        <br>
+        <br>
+        <br>
+        <div class="card mb-3" style="max-width: 700px;">
+            <form method="post" action="{% url 'loginpage:login' %}">
+                    {% csrf_token %}
+                    <br>
+                <table>
+                    <tr>
+                        <td>{{ form.username.label_tag }}</td>
+                        <td>{{ form.username }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.password.label_tag }}</td>
+                        <td>{{ form.password }}</td>
+                    </tr>
+                </table><br>
+            
+                <button class="btn btn-outline-success" type="submit"></i>Login</button>
+
+                 <input type="hidden" name="next" value="{% url 'main' %}">
+            </form><br>
+                <p><a href="{% url 'password_reset' %}">Reset Password</a></p><br>
+                <p>Don't have an account?<a href="{% url 'loginpage:signup' %}"> SignUp for free</a></p>
+        </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            </body>
+{% endblock body %}
