@@ -23,8 +23,12 @@ app_name = "loginpage"
 
 
 urlpatterns = [
-    path('login', auth_views.LoginView.as_view(template_name='loginpage/loginpage.html'), name = 'login'),
-    path('logout', auth_views.LoginView.as_view(template_name='loginpage/loginpage.html'), name = 'logout'),
+    path('login', auth_views.LoginView.as_view(template_name='registration/login.html'), name = 'login'),
+    path('logout', auth_views.LoginView.as_view(template_name='loginpage/login.html'), name = 'logout'),
+    path('reset-form', auth_views.LoginView.as_view(template_name='loginpage/password_reset_form.html'), name = 'reset-form'),
+    path('reset-done', auth_views.LoginView.as_view(template_name='loginpage/password_reset_done.html'), name = 'reset-done'),
+    path('reset-confirm', auth_views.LoginView.as_view(template_name='loginpage/password_reset_confirm.html'), name = 'reset-confirm'),
+    path('reset-complete', auth_views.LoginView.as_view(template_name='loginpage/password_reset_complete.html'), name = 'reset-complete'),
     path('signup/', SignUpView.as_view(), name="signup"),
 
 ]

@@ -16,6 +16,7 @@ from bookview.models import Book
 class ListBook(generic.ListView):
     model = models.Book
     template_name = 'bookview/booklist.html'
+    paginate_by = 5
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         return context

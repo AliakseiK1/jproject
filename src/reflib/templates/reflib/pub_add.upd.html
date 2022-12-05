@@ -6,12 +6,25 @@
 </head>
 {% block body %}
 <body>
-    <h1>{{ operation }} Publisher</h1>
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <input type="submit" class="btn btn-outline-success mt-auto" value="{{ operation }}">
-
-    </form>
+    <div class="col-lg-6">
+        <h1>{{ operation }} Publisher</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" class="btn btn-outline-success mt-auto" value="{{ operation }}">
+        </form>
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 </body>
 {% endblock body %}
