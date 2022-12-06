@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Details of the Book
+{% endblock title %}
+
+{% block body %}
+<body>
+<h2>{{ object.book_aut }}: {{ object.book_name }}</h2>
+<br>
+    <form class="d-flex" action="{% url 'bookview:list_book_user' %}" method="get">
+      <button class="btn btn-outline-secondary" type="submit"></i><i class="bi bi-arrow-left-square"></i> Back to the List of Books</button>
+    </form><br>
+
+<div class="card mb-3" style="max-width: 1240px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{ object.book_image.url }}" class="img-fluid rounded-start" alt="No Image">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <p class="card-text">
+            <b>Annotation:</b> {{ object.book_annotation }}<br>
+            <b>Publisher:</b> {{ object.publisher }}<br>
+            <b>Type of the book cover:</b> {{ object.book_cover }}<br>
+            <b>Book category:</b> {{ object.category }}<br>
+            <b>Price: </b> {{ object.price_ht }}$<br>
+          </p>
+          <td>
+          <form action="{% url 'cartview:cart' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-success mt-auto">Add to Cart <i class="bi bi-cart-plus"></i></button>
+            <input type="number" name="quantity" value="1" step="1" min="1" max="20">
+            <input type="hidden" name="book_pk" value=" {{ object.pk }}">
+          </form>
+        </td>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</body>
+
+{% endblock body %}
