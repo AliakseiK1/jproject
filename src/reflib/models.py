@@ -6,8 +6,6 @@ from django.urls import reverse_lazy
 class Publisher(models.Model):
     pub_name = models.CharField(
         max_length=100,
-        #blank=True,
-        #null=True
         verbose_name='Publisher Name',
         unique=True)
     pub_country = models.CharField(
@@ -19,8 +17,9 @@ class Publisher(models.Model):
         null=True,
         verbose_name='Note')
     def get_absolute_url(self):
-        #return f'/details_publisher/{self.pk}'
         return reverse_lazy('reflib:details_publisher', kwargs={'pk': self.pk})
+    class Meta:
+        ordering = ['pk']
     def __str__(self):
         return self.pub_name
     
@@ -38,14 +37,12 @@ class Author(models.Model):
         blank=True,
         null=True,
         verbose_name='Note')
-    def __str__(self):
-        return self.auth_name
     def get_absolute_url(self):
-        #return f'/details_author/{self.pk}'
         return reverse_lazy('reflib:details_author', kwargs={'pk': self.pk})
+    class Meta:
+        ordering = ['pk']
     def __str__(self):
         return self.auth_name
-        
 
 class Cover(models.Model):
     HADRCOVER = 'HC'

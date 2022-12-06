@@ -12,7 +12,6 @@ All Publishers
     <form class="d-flex" action="{% url 'reflib:add_publisher' %}" method="get">
       <button class="btn btn-outline-warning" type="submit"></i><i class="bi bi-plus-square"></i> Add New Publisher</button>
     </form><br>
-
     <table class="table table-striped table-hover">
         <tr>
             <b>
@@ -28,7 +27,7 @@ All Publishers
 
     <tr>
         <td><a href="{% url 'reflib:upd_publisher' pk=obj.pk %}"><button type="button" class="btn btn-outline-warning mt-auto"><b><i class="bi bi-pencil"></i>{{ obj.pk }}</b></button></a></td>
-        <td>{{ obj.pub_name }}</td>
+        <td><a href="{% url 'reflib:details_publisher' pk=obj.pk %}">{{ obj.pub_name }}</a></td>
         <td>{{ obj.pub_country }}</td>
         <td>{{ obj.pub_note }}</td>
         <td><a href="{% url 'reflib:del_publisher' pk=obj.pk %}"><button type="button" class="btn btn-outline-danger mt-auto"><i class="bi bi-trash"></i></button></a></td>

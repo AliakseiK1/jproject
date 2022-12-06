@@ -11,20 +11,26 @@
         <form action="" method="post">
             {% csrf_token %}
             {{ form|crispy }}
-            <input type="submit" class="btn btn-outline-success mt-auto" value="{{ operation }}">
+            <div class="btn-group">
+                <input type="submit" class="btn btn-outline-success mt-auto" value="{{ operation }}">
+                &nbsp&nbsp&nbsp&nbsp&nbsp
+                <form class="d-flex" action="{% url 'reflib:list_publisher' %}" method="get">
+                    <button class="btn btn-outline-secondary" type="submit"> Cancel </button>
+                </form>
+            </div>
         </form>
     </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 </body>
 {% endblock body %}

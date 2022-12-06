@@ -6,8 +6,33 @@ Author Details
 
 {% block body %}
 <body>
-    <h1>Details Of Authors</h1>
-    <b>PK{{ object.pk }}</b> and Name of the Author is <b>{{ object.auth_name }}</b><br>
-    <b>NOTE:</b> {{ object.auth_note }}
+    
+    <h1>{{ object.auth_name }}</h1>
+    <br>
+    <div class="btn-group">
+        <form class="d-flex" action="{% url 'reflib:list_author' %}" method="get">
+        <button class="btn btn-outline-secondary" type="submit"></i><i class="bi bi-arrow-left-square"></i> Back to the List of Authors</button>
+        </form>&nbsp&nbsp&nbsp&nbsp&nbsp
+        <form class="d-flex" action="{% url 'reflib:upd_author' pk=object.pk %}" method="get">
+        <button class="btn btn-outline-warning" type="submit"></i><i class="bi bi-pencil"></i> Edit</button>
+        </form>
+    </div>
+    <br>
+    <br>
+
+<div class="card mb-3" style="max-width: 700px;">
+    <div class="row g-0">
+      <div class="col-md-8">
+        <div class="card-body">
+          <p class="card-text">
+            <b>PK:</b> {{ object.pk }}<br>
+            <b>NOTE:</b> {{ object.auth_note }}<br>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </p>
+        </div>
+       </div>  
+    </div>  
+</div>  
 </body>
+
 {% endblock body %}
