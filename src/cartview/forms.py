@@ -18,4 +18,13 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = models.Order
         fields = ["name_surname","address_line1","address_line2","town_city","country","phone_number","email"]
+
+class MyOrders(forms.ModelForm):
+    class Meta:
+        model = models.Order
+        fields = ["name_surname","address_line1","address_line2","town_city","country","phone_number","email"]
+class EditOrders(forms.ModelForm):
+    class Meta:
+        model = models.Order
+        fields = ["status","name_surname","address_line1","address_line2","town_city","country","phone_number","email", "order_comment"]
         

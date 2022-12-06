@@ -52,3 +52,8 @@ class Order(models.Model):
     email = models.EmailField(verbose_name="Email", blank=False, max_length=100)
     created_at = models.DateTimeField('Created At',auto_now=False, auto_now_add=True)
     updated_at = models.DateTimeField('Updated At', auto_now=True, auto_now_add=False)
+    order_comment = models.TextField(
+        max_length=200,
+        blank=True,
+        null=True,
+        verbose_name='Comment for Order')

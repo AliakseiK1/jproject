@@ -40,7 +40,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="{% url 'logout' %}">LogOut</a></li>
                                     <li><hr class="dropdown-divider" /></li>
-                                    <li><a class="dropdown-item" href="#">User Profile (TBD)</a></li>
+                                    <li><a class="dropdown-item" href="/cartview/my_orders/">Orders</a></li>
                                 </ul>
                             {% else %}
                             <li class="nav-item"><a class="nav-link active" aria-current="page">Welcome to the shop!</a></li><li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'loginpage:login' %}"><i> Please <b>log in.</b></i></a></li>

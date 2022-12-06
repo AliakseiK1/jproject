@@ -81,4 +81,23 @@ class Order(CreateView):
         return super().get_success_url()
 
 class OrderSuccess(TemplateView):
+    model = models.Order
     template_name = "cartview/submit_success.html"
+    
+class MyOrders(ListView):
+    template_name = "cartview/my_orders.html"
+    model = models.Order
+    form_class = forms.MyOrders
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        return context
+
+class UpdOrder(generic.UpdateView):
+    model = models.Order
+    form_class = forms.EditOrders
+    template_name = 'cartview/order_add.upd.html'
+    success_url = reverse_lazy("cartview:my_orders")
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['operation'] = 'Update'
+        return context
