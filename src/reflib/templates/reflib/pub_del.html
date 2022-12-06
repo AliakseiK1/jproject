@@ -13,5 +13,10 @@ Delete Publisher
         {{ form|crispy }}
         <input type="submit" class="btn btn-outline-danger mt-auto" value="Press the button to Confirm">
     </form>
+    <br>
+
+                <form class="d-flex" action="{% url 'reflib:list_publisher' %}" method="get">
+                    <button class="btn btn-outline-secondary" type="submit"> Cancel </button>
+                </form>
 </body>
 {% endblock body %}

@@ -13,6 +13,10 @@
                         {% csrf_token %}
                         {{ form|crispy }}
                         <input type="submit" class="btn btn-outline-success mt-auto" value="{{ operation }}">
+                        &nbsp&nbsp&nbsp&nbsp
+                        <form class="d-flex" action="{% url 'bookview:list_book' %}" method="get">
+                            <button class="btn btn-outline-secondary" type="submit"> Cancel </button>
+                        </form>
                     </form>
                 </div>
             </body>
