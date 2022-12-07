@@ -88,8 +88,11 @@ class MyOrders(ListView):
     template_name = "cartview/my_orders.html"
     model = models.Order
     form_class = forms.MyOrders
+    paginate_by = 10
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
+        #context['all_orders'] = models.Order.objects.get()[:0]
+        #context['user_orders'] = bw_models.Book.objects.filter(category_id="2").order_by('-created_at')
         return context
 
 class UpdOrder(generic.UpdateView):
