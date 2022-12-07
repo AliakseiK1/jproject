@@ -39,8 +39,6 @@
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-circle"></i> User</a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="{% url 'logout' %}">LogOut</a></li>
-                                    <li><hr class="dropdown-divider" /></li>
-                                    <li><a class="dropdown-item" href="/cartview/my_orders/">Orders</a></li>
                                 </ul>
                             {% else %}
                             <li class="nav-item"><a class="nav-link active" aria-current="page">Welcome to the shop!</a></li><li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'loginpage:login' %}"><i> Please <b>log in.</b></i></a></li>
@@ -56,6 +54,7 @@
                                     <li><a class="dropdown-item" href="/reflib/list_pub/">Publishers Management</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/cartview/my_orders/"><i class="bi bi-truck"></i> Orders</a></li>
                             {% endif %}
                             
                         </ul>
