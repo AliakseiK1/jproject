@@ -29,10 +29,12 @@ class Book(models.Model):
     
 
     def get_absolute_url(self):
-        #return f'/details_author/{self.pk}'
         return reverse_lazy('bookview:details_book', kwargs=({'pk': self.pk}))
     
     TVA_AMOUNT = 19.25
 
     def price_ttc(self):
         return self.price_ht + self.TVA_AMOUNT
+
+    class Meta:
+        ordering = ['pk']
