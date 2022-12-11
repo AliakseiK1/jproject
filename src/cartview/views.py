@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.views import generic
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
-from . import models, forms
+from cartview import models, forms
 from . forms import OrderForm
 from . models import Cart, CartItem
 from bookview import models as bw_models
 from random import randint
 from django.urls import reverse_lazy
+from cartview.models import Order as OrderModel, Cart as CartModel
 
 class DeleteCartItem(DeleteView):
     model = models.CartItem
@@ -89,11 +90,29 @@ class MyOrders(ListView):
     model = models.Order
     form_class = forms.MyOrders
     paginate_by = 10
+    
+    """
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         #context['all_orders'] = models.Order.objects.get()[:0]
         #context['user_orders'] = bw_models.Book.objects.filter(category_id="2").order_by('-created_at')
         return context
+        
+    """
+    def get_context_data(self, *args, **kwargs):
+        order_list = ''
+
+        if self.request.user.is_authenticated:
+            if self.request.user.has_perm("auth.admin") or \
+                self.request.user.has_perm("contenttypes.change_contenttype"):
+                order_list = models.Order.objects.all().order_by("status", "-created_at")
+            elif self.request.user.has_perm("cartview.view_order"):
+                cur_user = self.request.user
+                cart_list = CartModel.objects.all().filter(user_id=cur_user).values('pk')
+                order_list = models.Order.objects.all().filter(cart_id=cart_list).order_by("-created_at")
+        context = super().get_context_data(object_list=order_list, *args, **kwargs)
+        return context
+
 
 class UpdOrder(generic.UpdateView):
     model = models.Order
